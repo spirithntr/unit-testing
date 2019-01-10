@@ -1,0 +1,36 @@
+{
+  "name": "epamfrontendlab",
+  "version": "0.0.1",
+  "description": "EPAM Front Lab",
+  "private": true,
+  "scripts": {
+    "build": "npx webpack",
+    "watch": "npx webpack --watch --mode=development"
+  },
+  "keywords": [
+    "HTML",
+    "JavaScript",
+    "CSS"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "normalize.css": "^8.0.0",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^3.2.1"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "devDependencies": {
+    "jasmine-core": "^3.3.0",
+    "karma": "^3.1.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^2.0.0",
+    "karma-jasmine": "^2.0.1"
+  }
+}
