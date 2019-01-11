@@ -52,33 +52,33 @@ export default class PersonView {
         this.ranges        = container.querySelector('.ranges');
         this.pages         = container.querySelector('.pages');
         this.modalOverlay  = container.querySelector('.modal-overlay');
-        this.modal         = container.querySelector('.full-info');
+        this.modal = container.querySelector('.full-info');
     }
     showList(personList) {
-
+        
         if(this.viewList.children.length > 0) {
             removeChildren(this.viewList);
         }
-
+        
         personList.forEach((person) => {
             const li  = document.createElement('li'),
-                  img = document.createElement('img'),
-                  pName = document.createElement('p');
+            img = document.createElement('img'),
+            pName = document.createElement('p');
             img.src = person.picture.thumbnail;
             const { title, first, last } = person.name;
             pName.innerText = `${sentenceCase(title)}. ${sentenceCase(first)} ${sentenceCase(last)}`;
             li.appendChild(img);
             li.appendChild(pName);
-
+            
             li.addEventListener(PersonView.CLICK,(event) => this.showFullInfo(person,event));
-
+            
             this.viewList.appendChild(li);
         });
     }
     showRanges(ranges, controller) {
         ranges.forEach( (range, index) => {
             const li = document.createElement('li'),
-                  a  = document.createElement('a');
+            a  = document.createElement('a');
             if(!index) {
                 a.classList.add(PersonView.ACTIVE);
                 this.activeRange = a;
@@ -97,14 +97,14 @@ export default class PersonView {
         this.activeRange.classList.add(PersonView.ACTIVE);
     }
     showPages(pageCount, controller) {
-
+        
         if(this.pages.children.length > 0) {
             removeChildren(this.pages);
         }
-
+        
         for(let i = 0; i < pageCount; i++) {
             const li = document.createElement('li'),
-                  a  = document.createElement('a');
+            a  = document.createElement('a');
             if( i === 0 ) {
                 a.classList.add(PersonView.ACTIVE);
                 this.activePage = a;
@@ -129,11 +129,11 @@ export default class PersonView {
         over.addEventListener(PersonView.CLICK,() => over.classList.add(PersonView.HIDDEN));
         // show modal window
         const modal = this.modal;
-
+        
         if(this.modal.children.length > 0) {
             removeChildren(this.modal);
         }
-
+        
         modal.classList.remove(PersonView.HIDDEN);
         addElement(modal, 'img', { src: person.picture.large, alt: `${person.name.first} ${person.name.last}` });
         const div = addElement(modal, 'div', {});
@@ -142,6 +142,20 @@ export default class PersonView {
         addElement(div, 'p'  , {}, `State: ${sentenceCase(person.location.state)}`);
         addElement(div, 'p'  , {}, `Email: ${person.email}`);
         addElement(div, 'p'  , {}, `Phone: ${person.phone}`);
-
+        
     }
+    /* develblock:start */
+    _sentenceCase() {
+        return sentenceCase.apply(this, arguments);
+    }
+    _parseAddress() {
+        return parseAddress.apply(this, arguments);
+    }
+    _removeChildren() {
+        return removeChildren.apply(this, arguments);
+    }
+    _addElement() {
+        return addElement.apply(this, arguments);
+    }
+    /* develblock:end */
 }

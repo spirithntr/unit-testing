@@ -12,7 +12,11 @@ describe('personview', function () {
     })
   })
   describe('accessing private methods', function () {
-    it('', function () {
+    it("xsentenceCase should be defined", function () {
+      expect(PersonView.prototype._sentenceCase).toBeDefined();
+    });
+    it("sentenceCase with param peter should return Peter", function () {
+      expect(PersonView.prototype._sentenceCase('peter')).toBe('Peter');
     })
   })
 })

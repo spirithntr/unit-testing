@@ -36,6 +36,7 @@
     "karma-mocha-reporter": "^2.2.5",
     "karma-nyan-reporter": "^0.2.5",
     "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^3.0.5"
+    "karma-webpack": "^3.0.5",
+    "webpack-strip-block": "^0.2.0"
   }
 }
