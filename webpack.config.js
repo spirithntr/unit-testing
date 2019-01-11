@@ -7,12 +7,13 @@ module.exports = {
         filename : 'index.js'
     },
     module : {
-        rules: [ { 
+        rules: [ {
                 test   : /.js$/,
                 loader : 'babel-loader' 
             }
         ]
     },
-    mode: 'production'
+    mode: 'production',
+    devtool: 'inline-source-map'
 };
 
