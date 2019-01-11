@@ -3,7 +3,7 @@ import PersonView from './personview.js';
 
 // config: configuration for URI
 // container: DOM element for widget
-// ranges: array for peginations
+// ranges: array for paginations
 export default class PersonWidget{
     constructor(config, container, ranges) {
         this.view = new PersonView(container);
