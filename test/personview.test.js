@@ -1,5 +1,4 @@
 // console.log(window.__html__)
-import sentenceCase from '../src/widget/personview.js'
 import PersonView from '../src/widget/personview.js'
 
 // var elm = window.__html__["test.htm"];
@@ -11,12 +10,25 @@ describe('personview', function () {
       // expect(sentenceCase('spencer')).toBe('Spencer');
     })
   })
-  describe('accessing private methods', function () {
-    it("xsentenceCase should be defined", function () {
+  describe('checking private methods', function () {
+    it("sentenceCase should be defined", function () {
       expect(PersonView.prototype._sentenceCase).toBeDefined();
     });
     it("sentenceCase with param peter should return Peter", function () {
       expect(PersonView.prototype._sentenceCase('peter')).toBe('Peter');
+      expect(PersonView.prototype._sentenceCase('PETER')).toBe('PETER');
+    })
+    it("parseAddress convert 4091 lakeshore rd to 4091 Lakeshore Rd", function () {
+      expect(PersonView.prototype._parseAddress('4091 lakeshore rd')).toBe(' 4091 Lakeshore Rd');
+    })
+    let container = {
+      'children': [],
+      'removeChild': function () {
+        this.children.shift();
+      }
+    }
+    xit("removeChildren should delete elements in container", function () {
+      // expect(PersonView.prototype._removeChildren(container));
     })
   })
 })
