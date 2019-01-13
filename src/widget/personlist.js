@@ -58,4 +58,9 @@ export default class PersonList {
               end   = start + this.range;
         this.view.showList(this.personList.slice(start, end));
     }
+/* develblock:start */
+    _buildURL() {
+        return buildUrl.apply(this, arguments)
+    }
+/* develblock:end */
 }

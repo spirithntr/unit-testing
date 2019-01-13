@@ -1,13 +1,9 @@
-// console.log(window.__html__)
 import PersonView from '../src/widget/personview.js'
-
-// var elm = window.__html__["test.htm"];
 describe('personview', function () {
   describe('trivial tests', function () {
     it('personview and its methods should be defined', function () {
       expect(PersonView).toBeDefined();
       expect(PersonView.prototype.showFullInfo).toBeDefined();
-      // expect(sentenceCase('spencer')).toBe('Spencer');
     })
   })
   describe('checking private methods', function () {
@@ -21,20 +17,27 @@ describe('personview', function () {
     it("parseAddress convert 4091 lakeshore rd to 4091 Lakeshore Rd", function () {
       expect(PersonView.prototype._parseAddress('4091 lakeshore rd')).toBe(' 4091 Lakeshore Rd');
     })
-    let container = {
-      'children': [],
-      'removeChild': function () {
-        this.children.shift();
-      }
-    }
-    xit("removeChildren should delete elements in container", function () {
-      // expect(PersonView.prototype._removeChildren(container));
+  })
+  describe('addElement', function () {
+    beforeAll(function () {
+      let container;
+      this.container = document.createElement('main');
+    })
+    beforeEach(function () {
+      this.container.innerHTML = '';
+    })
+    it('should add element', function () {
+      PersonView.prototype._addElement(this.container, 'div', {});
+      expect(this.container.children.length).toBe(1);
+    });
+    it("should add one more element", function () {
+      PersonView.prototype._addElement(this.container, "div", {});
+      PersonView.prototype._addElement(this.container, "div", {});
+      expect(this.container.children.length).toBe(2);
+    });
+    it("should delete all elements", function () {
+      PersonView.prototype._removeChildren(this.container);
+      expect(this.container.children.length).toBe(0);
     })
   })
 })
-// describe('template', function () {
-//   it('should expose the templates to __html__', function () {
-//     document.body.innerHTML = __html__['index.html'];
-//     expect(document.querySelector(".person-list-container")).toBeDefined();
-//   })
-// })
